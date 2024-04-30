@@ -115,23 +115,24 @@ export const todoSlice = createSlice({
     filterTodos: (state, action) => {
       if (JSON.parse(localStorage.getItem("todoLists"))) {
         filterState = JSON.parse(localStorage.getItem("todoLists"));
-        if (action.payload === "finished") {
-          state.todoLists = filterState.filter((item) => {
-            return item.condition === true;
-          });
-        } else if (action.payload === "unfinished") {
-          state.todoLists = filterState.filter((item) => {
-            return item.condition === false;
-          });
-        } else {
-          state.todoLists = filterState;
-        }
+        console.log("hell--1");
+      }
+      if (action.payload === "finished") {
+        console.log("hello--2");
+        state.todoLists = filterState.filter((item) => {
+          return item.condition === true;
+        });
+      } else if (action.payload === "unfinished") {
+        state.todoLists = filterState.filter((item) => {
+          return item.condition === false;
+        });
+      } else {
+        state.todoLists = filterState;
       }
     },
 
     getLocalStorage: (state) => {
       state.todoLists = [...JSON.parse(localStorage.getItem("todoLists"))];
-      console.log(state.todoLists);
     },
   },
 });
